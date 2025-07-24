@@ -1,0 +1,20 @@
+name: boston311
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - geopandas
+  - jupyter
+  - matplotlib
+  - numpy
+  - pandas
+  - plotly
+  - pyarrow
+  - requests
+  - scikit-learn
+  - scipy
+  - seaborn
+  - shapely
+  - streamlit
+  - tqdm
+  - urllib3
