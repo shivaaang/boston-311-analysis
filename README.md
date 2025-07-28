@@ -6,7 +6,7 @@
 ![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
 ![Parquet](https://img.shields.io/badge/Data%20Format-Parquet-informational?logo=apacheparquet)
 
-This repository contains the complete, reproducible data pipeline for acquiring, cleaning, and preparing over 2.5 million Boston 311 service requests from 2015 to 2024. The primary goal of this phase was to address significant data quality issues, particularly the recovery of over 660,000 records with missing location data, to create a robust, analysis-ready dataset.
+This repository contains the complete, reproducible data pipeline for acquiring, cleaning, and preparing over 2.5 million Boston 311 service requests from 2015 to 2024. The primary goal of this phase was to address significant data quality issues, particularly the recovery of over 650,000 records with missing location data, to create a robust, analysis-ready dataset with an exceptional 98.6% retention rate.
 
 **Project Status:** Data Acquisition and Cleaning phase is **complete**. The final output is a single, cleaned Parquet file located at `data/processed/boston_311_cleaned.parquet`.
 
@@ -16,9 +16,9 @@ This repository contains the complete, reproducible data pipeline for acquiring,
 * **Automated Data Acquisition**: Scripts automatically download ten years of 311 service request data and all required geospatial shapefiles from their official sources. The scripts are idempotent, checking for existing files before downloading.
 * **Comprehensive Data Cleaning**: The `01_data_cleaning.ipynb` notebook merges all yearly files, standardizes data types, removes redundant columns, and handles systematic inconsistencies in the raw data.
 * **Advanced Geospatial Imputation**: A multi-stage spatial imputation process was used to recover critical location data for records with valid coordinates:
-    * **ZIP Codes**: Imputed for **551,260** records using a point-in-polygon join with a custom-filtered Massachusetts ZCTA shapefile.
-    * **Street Names**: Imputed for **10,315** records using a nearest-neighbor join against the official Boston SAM address point database.
-    * **Neighborhoods**: Imputed and standardized for **98,801** records using a point-in-polygon join with official neighborhood boundaries.
+    * **ZIP Codes**: Imputed for **551,136** records using a point-in-polygon join with a custom-filtered Massachusetts ZCTA shapefile.
+    * **Street Names**: Imputed for **9,101** records using a nearest-neighbor join against the official Boston SAM address point database.
+    * **Neighborhoods**: Imputed and standardized for **98,211** records using a point-in-polygon join with official neighborhood boundaries.
 * **Rigorous Validation**: The accuracy of all geospatial data sources was confirmed through a suite of test notebooks that verify known locations against the shapefiles.
 * **Reproducible Environment**: The project includes an `environment.yml` file to ensure the analysis can be reproduced reliably with all necessary dependencies.
 
@@ -39,6 +39,7 @@ BOSTON-311-ANALYSIS/
 │   │   ├── boston_311_cleaned.parquet
 │   │   ├── (↓ these Parquets will be generated here by the script)
 │   │   ├── boston_neighborhood_boundaries.parquet
+│   │   ├── boston_neighborhood_boundaries_remapped.parquet
 │   │   ├── live_street_address_management_sam_addresses.parquet
 │   │   └── massachusetts_zip_boundaries.parquet
 │   └── raw/

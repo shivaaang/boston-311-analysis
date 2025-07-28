@@ -12,6 +12,6 @@
 
 
 # Ignore a specific file in the root
-/project_description.txt
 /CLAUDE.md
 /.claudeignore
+/temp_files

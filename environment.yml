@@ -18,3 +18,5 @@ dependencies:
   - streamlit
   - tqdm
   - urllib3
+  - pip:
+    - "kaleido==1.0.0"
